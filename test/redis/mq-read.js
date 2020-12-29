@@ -1,10 +1,8 @@
 const IORedis = require("ioredis")
-const { RedisStream } = require("../../app/lib/redis-stream")
-// const { RedisQueue, RedisStream, StreamQueue } = require("../../app/lib/redis-mq")
-const { generateRandom } = require("../../app/lib/util")
+const { RedisStream } = require("../../lib/redis-stream")
 const redis = new IORedis()
 
-
+RedisStream
 const STREAM_KEY = 'streamDemoKey'
 const GROUP_NAME = 'streamDemoGroup'
 const CONSUMER_NAME = 'streamDemoConsumer'
@@ -23,18 +21,31 @@ const f = async () => {
 
   let res, res1, res2
   res = await mq.getStreamInfo()
-  // res = await mq.getGroupsInfo()
-  // res = await mq.getConsumersInfo()
-  // res = await mq.add({ no: 2 })
-  // res = await mq.getPending()
-  // res = await mq.getInfoById('1609213179820-0')
-  // res = await mq.xrevrange()
-  // res = await mq.xrange()
-  // res = await mq.ack('1609204444880')
-  // res = await mq.xreadGroup({ ID: 0 })
-  // res = await mq.createGroup('test1')
-  // res = await mq.xadd({ ID: 'asd', item: { no: 1 } })
-  // res = await mq.read({ID:1609204903275})
+  console.log('res:', res)
+  res = await mq.getGroupsInfo()
+  console.log('res:', res)
+  res = await mq.getConsumersInfo()
+  console.log('res:', res)
+  res = await mq.add({ no: 2 })
+  console.log('res:', res)
+  res = await mq.getPending()
+  console.log('res:', res)
+  res = await mq.getInfoById('1609213179820-0')
+  console.log('res:', res)
+  res = await mq.xrevrange()
+  console.log('res:', res)
+  res = await mq.xrange()
+  console.log('res:', res)
+  res = await mq.ack('1609204444880')
+  console.log('res:', res)
+  res = await mq.xreadGroup({ ID: 0 })
+  console.log('res:', res)
+  res = await mq.createGroup('test1')
+    .catch(err => console.log('err:', err.message, res.command))
+  console.log('res:', res)
+  res = await mq.xadd({ ID: 'asd', item: { no: 1 } })
+  console.log('res:', res)
+  res = await mq.xread({ ID: 1609204903275 })
   // mq.subcribe(STREAM_KEY, (res) => {
   //   console.log('res:', res)
   // })
@@ -52,7 +63,7 @@ const f = async () => {
   console.log('res1:', res1)
 
   console.log('res2:', res2)
-  return
+  // return
 
   // XACK streamDemoKey streamDemoGroup 1608810766785 - 0
   process.exit(0)

@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/runzx/redis-stream-queue#readme",
   "dependencies": {
+    "debug": "^4.3.1",
     "ioredis": "^4.19.4"
   }
 }
