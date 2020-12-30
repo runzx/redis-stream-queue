@@ -1,7 +1,10 @@
 const IORedis = require("ioredis")
 const { RedisStream } = require("../../lib/redis-stream")
 const { StreamQueue, DelayQueue } = require("../../lib/stream-queue")
+const { generateRandom } = require("../../lib/util")
 const redis = new IORedis()
+
+const debug = require('debug')('mq:test')
 
 
 // const STREAM_KEY = 'streamDemoKey'
@@ -27,8 +30,9 @@ const f = async () => {
   res = await mq.start()
 
   // console.log('res:', res)
-  // res = await mq.addTask('streamDemoKey', { no: 5 }, 5)
-  console.log('res:', res)
+  const no = generateRandom(6)
+  res = await mq.addTask('streamDemoKey', { no }, 5)
+  debug('start:', res)
   return
   res = await mq.getConsumersInfo()
   console.log('res:', res)
