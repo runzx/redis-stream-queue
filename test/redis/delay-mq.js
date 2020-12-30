@@ -1,6 +1,6 @@
 const IORedis = require("ioredis")
 const { RedisStream } = require("../../lib/redis-stream")
-const { StreamQueue } = require("../../lib/stream-queue")
+const { StreamQueue, DelayQueue } = require("../../lib/stream-queue")
 const redis = new IORedis()
 
 
@@ -15,21 +15,19 @@ const STREAM_DELAY_KEY = 'ZxQueueDelay'
 const PREFIX_DELAY_KEY = 'ZX_PUB_EX'
 
 const f = async () => {
-  const mq = await StreamQueue.init({
-    client: redis, sKey: STREAM_KEY,
+  const mq = await DelayQueue.init({
+    client: redis,
+    sKey: STREAM_DELAY_KEY,
+    // sKey: STREAM_KEY,
     gKey: GROUP_NAME, cKey: CONSUMER_NAME
   })
 
   let res, res1, res2
 
-  res = await mq.subcribe(res => {
-    console.log('out res:', res)
-    process.exit(1)
-
-  })
+  res = await mq.start()
 
   // console.log('res:', res)
-  res = await mq.addTask({ no: 3 })
+  // res = await mq.addTask('streamDemoKey', { no: 5 }, 5)
   console.log('res:', res)
   return
   res = await mq.getConsumersInfo()

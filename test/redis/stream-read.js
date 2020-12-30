@@ -20,6 +20,7 @@ const f = async () => {
   })
 
   let res, res1, res2 = +new Date()
+  // 8秒插入16万条记录
   for (let index = 0; index < 158000; index++) {
     res = await mq.add({ no: index })
     if (!res) console.log('res:', index)
