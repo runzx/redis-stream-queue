@@ -33,7 +33,7 @@ const f = async () => {
 
   // console.log('res:', res)
   const no = generateRandom(6)
-  res = await mq.addTask('streamDemoKey', { no }, 0)
+  res = await mq.addTask('streamDemoKey', { no }, 6)
   debug('start:', res)
   return
   res = await mq.getConsumersInfo()

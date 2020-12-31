@@ -2,7 +2,7 @@
 
 message queue on redis stream v5+.
 
-## ES6 
+## ES6
 
 - 采用 ES6 + async/await + 面向对象重构设计
 - 达到易读懂，方便修改的学习目的。
@@ -10,11 +10,13 @@ message queue on redis stream v5+.
 ## 进度
 
 1. 基本 redis stream api 包文件: redis-stream.js
+2. 消息队列 redis stream queue(delay)包文件: stream-queue.js
 
 ## 目录结构
 
 ```bash
 ├── lib                   # 相关代码
+│   ├── stream-queue.js   queue api库
 │   ├── redis-stream.js   stream api库
 │   └── redis-base.js     基本库文件
 │
