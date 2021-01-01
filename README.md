@@ -2,10 +2,33 @@
 
 message queue on redis stream v5+.
 
-## ES6
+## redis v5+ stream, ES6
 
-- 采用 ES6 + async/await + 面向对象重构设计
-- 达到易读懂，方便修改的学习目的。
+- 延时队列 采用双 stream 队列保证订阅消息(`__keyevent@5__:expired`)不丢失
+- 采用 ES6 + async/await + 面向对象设计
+- 达到易读懂，方便修改。
+
+## Install
+
+```shell
+npm install redis-stream-queue
+```
+
+## Basic Usage
+
+```js
+const { RedisQueue } = require('redis-stream-queue')
+const IORedis = require('ioredis')
+
+const client = new IORedis(opt)
+const mq = RedisQueue.init({ client })
+
+const sKey = 'streamName' // queue name
+const ttl = 0 // ttl >0 --> delayQueue, unit: second
+
+mq.subcribe(sKey, cb) // callback
+const msgId = mq.addTask(sKey, { orderNo: '20210101001' }, ttl)
+```
 
 ## 进度
 
