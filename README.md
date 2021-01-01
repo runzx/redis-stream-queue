@@ -7,6 +7,7 @@ message queue on redis stream v5+.
 - 延时队列 采用双 stream 队列保证订阅消息(`__keyevent@5__:expired`)不丢失
 - 采用 ES6 + async/await + 面向对象设计
 - 达到易读懂，方便修改。
+- vscode 上有专为此开发的扩展插件: [redis-stream](https://marketplace.visualstudio.com/items?itemName=zhaixiang.redis-stream&ssr=false#overview)
 
 ## Install
 
