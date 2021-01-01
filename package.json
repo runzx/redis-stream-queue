@@ -1,6 +1,6 @@
 {
   "name": "redis-stream-queue",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "message queue on redis stream v5+.",
   "main": "index.js",
   "directories": {
