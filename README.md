@@ -25,9 +25,9 @@ const client = new IORedis(opt)
 const mq = RedisQueue.init({ client })
 
 const sKey = 'streamName' // queue name
-const ttl = 0 // ttl >0 --> delayQueue, unit: second
+const ttl = 0 // unit:second,defalut 0; if ttl >0 --> delayQueue,
 
-mq.subcribe(sKey, cb) // callback
+mq.subcribe(sKey, cb) // callback for task
 const msgId = mq.addTask(sKey, { orderNo: '20210101001' }, ttl)
 ```
 
