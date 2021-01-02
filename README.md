@@ -45,8 +45,6 @@ const msgId = mq.addTask(sKey, { orderNo: '20210101001' }, ttl)
 │   └── redis-base.js     基本库文件
 │
 ├── doc                   #  相关文档
-│   ├──
-│   ├──
 │   └── stream.md         redis stream 要点
 │
 └── index.js              # 主入口
