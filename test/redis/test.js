@@ -5,24 +5,40 @@ const { objToArr, arr2obj, arr2item } = require("../../lib/util")
 
 let res
 let redis = new RedisBase({ password: 'zx2962', sKey: 'abc', gKey: 'bosstg', cKey: 'zx' })
+
+redis.getMsgById('1632398750394-0').then(res => {
+  console.log('msg:', res)
+})
+
+// redis.getMsgByConsumer('mm').then(res => {
+//   console.log('res:', res)
+// }, err => { console.log('err:', err) })
+// redis.xack('1632398750394-0').then(res => {
+//   console.log('xack:', res)
+// })
+// redis.getPEL().then(res => {
+//   console.log('res:', res)
+// })
+
+
 // redis.client.xadd('abc', 'maxlen', 5, '*', { zx: 'zhaix', b: 58 })
-redis.client.xadd('abc', '*', { a: 4, b: 2 })
+// redis.client.xadd('abc', '*', { a: 4, b: 2 })
 // objToArr({ b: 'abc', c: { a: 'a' }, a: 1, })
 // redis.creatGroup('abc', 'bosstg').then()
 
-redis.getStreamInfo('abc', ).then(res => {
-})
+// redis.getStreamInfo('abc', ).then(res => {
+// })
 
-redis.getGroupInfo('abc').then(res => {
-  console.log('res:', res)
-})
+// redis.getGroupInfo('abc').then(res => {
+//   console.log('res:', res)
+// })
 
-redis.getConsumersInfo().then(res => {
-  console.log('res:', res)
-}, err => {
-  console.log('err:', err)
+// redis.getConsumersInfo().then(res => {
+//   console.log('res:', res)
+// }, err => {
+//   console.log('err:', err)
 
-})
+// })
 
 // redis.getMsgByConsumer('zx', ).then(res => {
 //   console.log('res:', res)

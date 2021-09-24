@@ -11,7 +11,7 @@
 5. 未决队列（Pending_ids）
    - 消费者(Consumer)的状态变量，作用是维护消费者的未确认的 id
    - 已经被客户端读取的消息，但是还没有 ack
-6.
+6. 消息使用 XREADGROUP 读取后会进入待处理条目列表（PEL）
 
 ##　 command
 
