@@ -9,21 +9,24 @@ let redis = new RedisBase({ password: 'zx2962', sKey: 'abc', gKey: 'bosstg', cKe
 redis.client.xadd('abc', '*', { a: 4, b: 2 })
 // objToArr({ b: 'abc', c: { a: 'a' }, a: 1, })
 // redis.creatGroup('abc', 'bosstg').then()
-// redis.getStreamInfo('abc').then(res => {
-//   console.log('res:', res)
-// })
 
-// redis.getGroupInfo('abc').then(res => {
-//   console.log('res:', res)
-// })
+redis.getStreamInfo('abc', ).then(res => {
+})
 
-// redis.getConsumersInfo('abc', 'bosstg').then(res => {
-//   console.log('res:', res)
-// })
-
-redis.getMsgByConsumer('zx', 2).then(res => {
+redis.getGroupInfo('abc').then(res => {
   console.log('res:', res)
 })
+
+redis.getConsumersInfo().then(res => {
+  console.log('res:', res)
+}, err => {
+  console.log('err:', err)
+
+})
+
+// redis.getMsgByConsumer('zx', ).then(res => {
+//   console.log('res:', res)
+// })
 
 
 
